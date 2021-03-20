@@ -20,10 +20,10 @@ bg = pygame.image.load("./assets/bg.jpeg")
 
 while running:
     for event in pygame.event.get():
-        if event.type  == Pygame.QUIT:
+        if event.type  == pygame.QUIT:
             running = False
 
-    screen.blit(image, (0,0))
+    screen.blit(bg, (0,0))
 
     pygame.display.flip()
 
