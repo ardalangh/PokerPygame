@@ -1,12 +1,13 @@
 import pygame
+from screeninfo import get_monitors
 
 from Card import Card
 from CardDeck import CardDeck
 
+
 pygame.init()
 
-
-size = (700, 500)
+size = get_monitors()[1].height, get_monitors()[1].width
 screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 pygame.display.set_caption("Poker Game")
 

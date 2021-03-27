@@ -26,7 +26,7 @@ class CardDeck:
     
     def shuffle (self):
         """
-        shuffles the self.card which contains all the cards
+            :return shuffled self.cards
         """
         random.shuffle(self.cards)
 
