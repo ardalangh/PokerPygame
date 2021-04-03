@@ -1,11 +1,37 @@
+from CardDeck import CardDeck
+from Table import Table
+
+
 class Game:
 
-    def __init__(self, players, deck):
-        self.players = players
-        self.deck = deck
+    smallBlindAmount = 5   # $5
+    bigBlindAmount = 10    # $10 This is the min bet
+
+    def __init__(self):
+        self.round = 1
+        self.dealer = None
+        self.bigBlind = None
+        self.smallBlind = None
+
+        self.players = []
+        self.deck = CardDeck()
+        self.table = Table()
 
     def deal(self):
-        self.deck.shuffle()
+        if len(self.players <= 1):
+            raise Exception("You need at least 2 player to be able to play")
+
+        self.deck.shuffle()  # shuffle the cards
+
+        # Give two cards to each players
         for r in range(2):
             for player in self.players:
                 player.cards.append(self.deck.cards.pop())
+
+
+
+
+
+
+    def done(self):
+        self.round += 1

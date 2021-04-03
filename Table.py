@@ -5,7 +5,6 @@ class Table:
         self.flop = None
         self.turn = None
 
-
     def checkTableCards(self):
         if len(self.cards) > 5:
             raise RuntimeError("Table has 5 cards")
@@ -14,3 +13,9 @@ class Table:
         if len(preFlopCards) != 3:
             raise RuntimeError("PreFlop must have 3 cards")
         self.preFlop = preFlopCards
+
+    def setsFlop(self, flop):
+        self.flop = flop
+
+    def setsTurn(self, turn):
+        self.turn = turn
