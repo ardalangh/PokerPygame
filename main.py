@@ -4,19 +4,17 @@ from screeninfo import get_monitors
 from Card import Card
 from CardDeck import CardDeck
 
-
 pygame.init()
 
-size = get_monitors()[1].height, get_monitors()[1].width
+size = get_monitors()[0].height, get_monitors()[0].width
+
 screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 pygame.display.set_caption("Poker Game")
-
-
 
 deck = CardDeck()
 deck.shuffle()
 
-running = True 
+running = True
 
 clock = pygame.time.Clock()
 
@@ -28,16 +26,14 @@ cardJS = Card("Hearts", "K")
 
 while running:
     for event in pygame.event.get():
-        if event.type  == pygame.QUIT:
+        if event.type == pygame.QUIT:
             running = False
         elif event.type == pygame.VIDEORESIZE:
-                screen = pygame.display.set_mode((event.w, event.h),pygame.RESIZABLE)
-                bg = pygame.transform.scale(bg, (event.w, event.h))
-    screen.blit(bg, (0,0))
-
+            screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
+            bg = pygame.transform.scale(bg, (event.w, event.h))
+    screen.blit(bg, (0, 0))
 
     cardJS.draw(screen, 10, 10)
-
 
     pygame.display.flip()
 
