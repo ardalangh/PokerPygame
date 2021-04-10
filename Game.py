@@ -28,9 +28,18 @@ class Game:
             for player in self.players:
                 player.cards.append(self.deck.cards.pop())
 
+        # bets()
 
 
 
+        # self.table.setsPreFlop([self.deck.cards.pop() for i in range(3)])
+
+
+
+
+
+
+    # def bets(self):
 
 
     def done(self):
