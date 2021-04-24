@@ -20,8 +20,8 @@ deck = CardDeck()
 deck.shuffle()
 
 
-user_name = input("/t>Please enter your name: ")
-user_age = input("/t>Please enter your age: ")
+user_name = input("\t > Please enter your name: ")
+user_age = int(input("\t > Please enter your age: "))
 
 if user_age < 21:
     print(f"You can NOT play. You must wait {21 - user_age} years to be able to play")
@@ -29,6 +29,11 @@ if user_age < 21:
 
 
 user = Player(user_name, user_age)
+
+dummyPlayer1 = Player("dummy1", 0)
+dummyPlayer2 = Player("dummy2", 0)
+
+
 
 
 while running:

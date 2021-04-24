@@ -1,10 +1,11 @@
 class Player:
-    def __init__(self, name, age, money = 2000):
+    def __init__(self, name, age, money=2000):
         self.name = name
         self.age = age
         self.money = money
         self.cards = []
         self.img
+        self.dir = 2
 
     def __str__(self):
         return f"{self.name} has ${self.money}"
@@ -12,7 +13,6 @@ class Player:
     def checkCards(self):
         if len(self.cards) > 2:
             raise RuntimeError("Player has more than 2 cards")
-
 
     def getMoneyFrom(self, otherPlayer, quantity):
         if (otherPlayer.money < quantity):
@@ -26,6 +26,13 @@ class Player:
         otherPlayer.money += quantity
         self.money -= quantity
 
+    def assignPosOnScreen(self, dir):
+        """
+        assigns where each player will be positioned for the gui.
+        :param dir: 0: North 1:East 2:South 3:West
+        :return: None
+        """
+        self.dir = dir
 
 
 
