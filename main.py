@@ -7,7 +7,7 @@ from Player import Player
 
 pygame.init()
 
-size = get_monitors()[0].height, get_monitors()[0].width
+size = get_monitors()[0].width, get_monitors()[0].height
 
 screen = pygame.display.set_mode(size, pygame.RESIZABLE)
 pygame.display.set_caption("Poker Game")
@@ -33,6 +33,9 @@ user = Player(user_name, user_age)
 dummyPlayer1 = Player("dummy1", 0)
 dummyPlayer2 = Player("dummy2", 0)
 
+user.assignPosOnScreen(2)
+dummyPlayer1.assignPosOnScreen(1)
+dummyPlayer2.assignPosOnScreen(3)
 
 
 
@@ -44,7 +47,12 @@ while running:
             screen = pygame.display.set_mode((event.w, event.h), pygame.RESIZABLE)
             bg = pygame.transform.scale(bg, (event.w, event.h))
     screen.blit(bg, (0, 0))
+    
+    user.drawIcon(screen, size)
+    dummyPlayer1.drawIcon(screen, size)
+    dummyPlayer2.drawIcon(screen, size)
 
+    
     pygame.display.flip()
 
     clock.tick(60)
