@@ -9,8 +9,9 @@ class Player:
         self.age = age
         self.money = money
         self.cards = []
-        # self.img
         self.dir = 2
+        # self.img
+
 
     def __str__(self):
         return f"{self.name} has ${self.money}"
@@ -42,24 +43,53 @@ class Player:
 
     def assignCenter4drawIcon(self, size):
         width, height = size
-        if (self.dir == 2): return [width/2, height - 70 ]
+        if (self.dir == 2): return [width/2 - 20 , height - 80 ]
         elif (self.dir == 1): return [width - 70, height/2]
         elif (self.dir == 3): return [70, height/2]
 
 
+    def assignCenter4drawName(self, size):
+        width, height = size
+        if (self.dir == 2): return [width/2, height - 70 - 80]
+        elif (self.dir == 1): return [width - 70 - 80 , height/2]
+        elif (self.dir == 3): return [70 + 80, height/2]
 
 
-    def drawIcon (self, screen, size):
+
+    def assignCenter4drawCard(self, size):
+        width, height = size
+        if (self.dir == 2): return [width/2, height - 70 - 100]
+        elif (self.dir == 1): return [width - 70 - 100 , height/2]
+        elif (self.dir == 3): return [70 + 100, height/2]
+
+
+
+    def getAngleRot(self):
+        if (self.dir == 1): return -90.0
+        elif (self.dir == 2): return 0.0
+        elif (self.dir == 3): return 90.0
+
+
+
+    def drawIcon(self, screen, size):
         """
             invariant: the r of this circ needs to be smaller than the margin to from the screen
         """
-
         pygame.draw.circle(screen,
                            (255,255,255),
                            self.assignCenter4drawIcon(size),
                            60,
                            1
                            )
+        font = pygame.font.SysFont("Sans", 24)
+
+        user_name_to_be_displayed = font.render(self.name, True, (255,255,255))
+
+        pygame.transform.rotate(user_name_to_be_displayed, self.getAngleRot())
+
+
+
+        screen.blit(user_name_to_be_displayed, self.assignCenter4drawName(size))
 
         # font = pygame.font.SysFont(None, 24)
         #

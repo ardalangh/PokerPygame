@@ -1,3 +1,4 @@
+
 from CardDeck import CardDeck
 from Table import Table
 
@@ -13,20 +14,34 @@ class Game:
         self.bigBlind = None
         self.smallBlind = None
 
-        self.players = []
+        self.players = []    # LIST OF ALL PLAYERS
         self.deck = CardDeck()
         self.table = Table()
 
-    def deal(self):
-        if len(self.players <= 1):
+
+    def dealPreFlop(self, screen):
+        if len(self.players) <= 1:
             raise Exception("You need at least 2 player to be able to play")
+        self.deck.shuffle()
 
-        self.deck.shuffle()  # shuffle the cards
-
-        # Give two cards to each players
         for r in range(2):
             for player in self.players:
-                player.cards.append(self.deck.cards.pop())
+                x, y = player.assignCenter4drawCard((1000, 800))
+                player.cards.append(self.deck.cards.pop().draw(screen, x, y, player.getAngleRot()))
+
+
+
+
+    # def deal(self):
+    #     if len(self.players <= 1):
+    #         raise Exception("You need at least 2 player to be able to play")
+    #
+    #     self.deck.shuffle()  # shuffle the cards
+    #
+    #     # Give two cards to each players
+    #     for r in range(2):
+    #         for player in self.players:
+    #             player.cards.append(self.deck.cards.pop())
 
         # bets()
 

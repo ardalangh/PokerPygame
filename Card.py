@@ -10,9 +10,11 @@ class Card:
         # print(self.filePath)
 
 
-    def draw(self, screen, x , y):
+    def draw(self, screen, x , y, angle):
         card = pygame.image.load(self.filePath)
         card = pygame.transform.scale(card, (140, 180))
+        card = pygame.transform.rotate(card, angle)
 
         screen.blit(card, [x, y])
+        return self
 
