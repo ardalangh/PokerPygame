@@ -5,6 +5,7 @@ from Player import Player
 
 
 class Card:
+    MARGINBETWEENCARDS = 10
     def __init__(self, suit, face, screen_size):
         self.screen_size = screen_size
         self.suit = suit
@@ -18,29 +19,45 @@ class Card:
         self.x = None
         self.y = None
 
-    # def draw(self, screen):
-    #
-    #
-    #     screen.blit(card, [x, y])
-    #     return self
 
+    """
+        The function below are meant to be called in the order that they are displayed. 
+        if you attempt to call it in any other order you will get unexpected behavior 
+    """
     def belongs_to(self, player):
         self.player = player
+        if player.dir != 2:
+            self.filePath = f"./assets/cards/red_back.jpg"
+            self.card_loaded = pygame.image.load(self.filePath)
+            self.card_loaded = pygame.transform.scale(self.card_loaded, (140, 180))
 
     def rotate_card_in_respect_to_player_pos(self):
-        """
-        make sure that this function is called after the card belongs to a player
-        """
+
         assert self.player != None
         if self.player.dir == 1:
-            self.x = self.screen_size[0] - Player.MARGIN
-            self.y = self.screen_size[1] / 2
+            self.x = self.screen_size[0] - Player.MARGIN - self.card_loaded.get_height()
+            self.y = (self.screen_size[1] / 2 - self.card_loaded.get_width() / 2) +\
+            ((self.player.cards.index(self)) * (self.card_loaded.get_width() + Card.MARGINBETWEENCARDS) -
+             self.card_loaded.get_width() / 2)
             self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded,-90.0)
+
+
+
         elif self.player.dir == 2:
+            self.x = (self.screen_size[0] / 2 - self.card_loaded.get_width() / 2) +\
+                     ((self.player.cards.index(self)) * (self.card_loaded.get_width() + Card.MARGINBETWEENCARDS) -
+                      self.card_loaded.get_width()/2)
+            self.y = self.screen_size[1] - Player.MARGIN - self.card_loaded.get_height()
             self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded,0.0)
+
         elif self.player.dir == 3:
+            self.x = Player.MARGIN
+            self.y = (self.screen_size[1] / 2 - self.card_loaded.get_width() / 2) +\
+            ((self.player.cards.index(self)) * (self.card_loaded.get_width() + Card.MARGINBETWEENCARDS) -
+             self.card_loaded.get_width() / 2)
             self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded, 90.0)
 
-
-
-
+    def draw(self, screen):
+        self.rotate_card_in_respect_to_player_pos()
+        screen.blit(self.card_loaded_rotated, [self.x, self.y])
+        return self

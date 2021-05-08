@@ -53,6 +53,10 @@ while running:
     #         #     bg = pygame.transform.scale(bg, (event.w, event.h))
     #     # screen.blit(bg, (0, 0))
     screen.fill((0,0,0))
+    [c.draw(screen) for c in user.cards]
+    [c.draw(screen) for c in dummyPlayer1.cards]
+    [c.draw(screen) for c in dummyPlayer2.cards]
+
     #
     #     # user.drawIcon(screen, size)
     #     # dummyPlayer1.drawIcon(screen, size)
