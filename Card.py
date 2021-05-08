@@ -1,8 +1,12 @@
 import pygame
 
+from Player import Player
+
+
 
 class Card:
-    def __init__(self, suit, face):
+    def __init__(self, suit, face, screen_size):
+        self.screen_size = screen_size
         self.suit = suit
         self.face = face
         self.filePath = f"./assets/cards/{self.face}{self.suit[0].upper()}.jpg"
@@ -11,6 +15,8 @@ class Card:
         self.card_loaded = pygame.image.load(self.filePath)
         self.card_loaded = pygame.transform.scale(self.card_loaded, (140, 180))
         self.card_loaded_rotated = None
+        self.x = None
+        self.y = None
 
     # def draw(self, screen):
     #
@@ -27,9 +33,14 @@ class Card:
         """
         assert self.player != None
         if self.player.dir == 1:
+            self.x = self.screen_size[0] - Player.MARGIN
+            self.y = self.screen_size[1] / 2
             self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded,-90.0)
         elif self.player.dir == 2:
             self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded,0.0)
         elif self.player.dir == 3:
             self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded, 90.0)
+
+
+
 

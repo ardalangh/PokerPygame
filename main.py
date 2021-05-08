@@ -17,8 +17,8 @@ clock = pygame.time.Clock()
 # bg = pygame.image.load("./assets/bg.jpeg")
 
 # making an instance of deck (52 cards in there)
-deck = CardDeck()
-deck.shuffle()
+# deck = CardDeck(size)
+# deck.shuffle()
 
 
 user_name = "ardy"
@@ -30,7 +30,7 @@ if user_age < 21:
     print(f"You can NOT play. You must wait {21 - user_age} years to be able to play")
     exit()
 
-game = Game()
+game = Game(size)
 user = Player(user_name, user_age, 2000)
 dummyPlayer1 = Player("dummy1", 0, 2000)
 dummyPlayer2 = Player("dummy2", 0, 2000)

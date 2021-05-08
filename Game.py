@@ -8,14 +8,15 @@ class Game:
     smallBlindAmount = 5   # $5
     bigBlindAmount = 10    # $10 This is the min bet
 
-    def __init__(self):
+    def __init__(self, screen_size):
         self.round = 1
+        self.screen_size = screen_size
         self.dealer = None
         self.bigBlind = None
         self.smallBlind = None
 
         self.players = []    # LIST OF ALL PLAYERS
-        self.deck = CardDeck()
+        self.deck = CardDeck(screen_size)
         self.table = Table()
 
 

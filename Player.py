@@ -4,6 +4,7 @@ import pygame
 
 
 class Player:
+    MARGIN = 50
     def __init__(self, name, age, money=2000):
         self.name = name
         self.age = age
@@ -64,10 +65,10 @@ class Player:
 
 
 
-    def getAngleRot(self):
-        if (self.dir == 1): return -90.0
-        elif (self.dir == 2): return 0.0
-        elif (self.dir == 3): return 90.0
+    # def getAngleRot(self):
+    #     if (self.dir == 1): return -90.0
+    #     elif (self.dir == 2): return 0.0
+    #     elif (self.dir == 3): return 90.0
 
 
 
