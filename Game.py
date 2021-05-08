@@ -26,8 +26,10 @@ class Game:
 
         for r in range(2):
             for player in self.players:
-                x, y = player.assignCenter4drawCard((1000, 800))
-                player.cards.append(self.deck.cards.pop().draw(screen, x, y, player.getAngleRot()))
+                card = self.deck.cards.pop()
+                card.belongs_to(player)
+                player.cards.append()
+
 
 
 

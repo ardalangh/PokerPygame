@@ -49,13 +49,14 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         # elif event.type == pygame.VIDEORESIZE:
-        #     screen = pygame.display.set_mode((event.w, event.h))
-        #     bg = pygame.transform.scale(bg, (event.w, event.h))
-    # screen.blit(bg, (0, 0))
-    
-    # user.drawIcon(screen, size)
-    # dummyPlayer1.drawIcon(screen, size)
-    # dummyPlayer2.drawIcon(screen, size)
+    #         #     screen = pygame.display.set_mode((event.w, event.h))
+    #         #     bg = pygame.transform.scale(bg, (event.w, event.h))
+    #     # screen.blit(bg, (0, 0))
+    screen.fill((0,0,0))
+    #
+    #     # user.drawIcon(screen, size)
+    #     # dummyPlayer1.drawIcon(screen, size)
+    #     # dummyPlayer2.drawIcon(screen, size)
 
     
     pygame.display.flip()

@@ -3,18 +3,33 @@ import pygame
 
 class Card:
     def __init__(self, suit, face):
-        self.suit = suit 
+        self.suit = suit
         self.face = face
         self.filePath = f"./assets/cards/{self.face}{self.suit[0].upper()}.jpg"
-        self.size = (None , None) # width : 0 height : 1
-        # print(self.filePath)
+        self.size = (None, None)  # width : 0 height : 1
+        self.player = None
+        self.card_loaded = pygame.image.load(self.filePath)
+        self.card_loaded = pygame.transform.scale(self.card_loaded, (140, 180))
+        self.card_loaded_rotated = None
 
+    # def draw(self, screen):
+    #
+    #
+    #     screen.blit(card, [x, y])
+    #     return self
 
-    def draw(self, screen, x , y, angle):
-        card = pygame.image.load(self.filePath)
-        card = pygame.transform.scale(card, (140, 180))
-        card = pygame.transform.rotate(card, angle)
+    def belongs_to(self, player):
+        self.player = player
 
-        screen.blit(card, [x, y])
-        return self
+    def rotate_card_in_respect_to_player_pos(self):
+        """
+        make sure that this function is called after the card belongs to a player
+        """
+        assert self.player != None
+        if self.player.dir == 1:
+            self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded,-90.0)
+        elif self.player.dir == 2:
+            self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded,0.0)
+        elif self.player.dir == 3:
+            self.card_loaded_rotated = pygame.transform.rotate(self.card_loaded, 90.0)
 
