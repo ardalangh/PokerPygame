@@ -29,7 +29,7 @@ class Game:
             for player in self.players:
                 card = self.deck.cards.pop()
                 card.belongs_to(player)
-                player.cards.append()
+                player.cards.append(card)
 
 
 
