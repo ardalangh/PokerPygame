@@ -40,6 +40,8 @@ dummyPlayer2.assignPosOnScreen(3)
 
 game.dealPreFlop()
 game.dealFlop()
+game.dealTurn()
+game.dealRiver()
 
 while running:
     for event in pygame.event.get():

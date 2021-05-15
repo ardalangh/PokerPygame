@@ -5,7 +5,8 @@ from Table import Table
 
 class Game:
 
-    mid_cards_pos = [(10,10) ,  (40, 10), (70, 10), (100, 10), (130, 10), (160, 10)]
+    # mid_cards_pos = [(10,10) ,  (40, 10), (70, 10), (100, 10), (130, 10), (160, 10)]
+    mid_cards_pos = [(50+ 140 * i,10 ) for i in range(5)]
 
     smallBlindAmount = 5   # $5
     bigBlindAmount = 10    # $10 This is the min bet
@@ -22,6 +23,8 @@ class Game:
         self.table = Table()
 
         self.show_flops = False
+        self.show_river = False
+        self.show_turn = False
         self.flops = []
 
 
@@ -42,6 +45,17 @@ class Game:
     def dealFlop(self):
         [self.flops.append(self.deck.cards.pop()) for _ in range(3)]
         self.show_flops = True
+
+
+    def dealTurn(self):
+        self.flops.append(self.deck.cards.pop())
+        self.show_turn = True
+
+
+    def dealRiver(self):
+        self.flops.append(self.deck.cards.pop())
+        self.show_river = True
+
 
 
 
