@@ -61,3 +61,12 @@ class Card:
         self.rotate_card_in_respect_to_player_pos()
         screen.blit(self.card_loaded_rotated, [self.x, self.y])
         return self
+
+
+    def draw_middle_card(self,  screen, index):
+        mid_pos = [(10,10), (40, 10), (70, 10)]
+        screen.blit(self.card_loaded, mid_pos[index])
+
+
+
+

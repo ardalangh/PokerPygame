@@ -19,8 +19,13 @@ class Game:
         self.deck = CardDeck(screen_size)
         self.table = Table()
 
+        self.show_flops = False
+        self.flops = []
 
-    def dealPreFlop(self, screen):
+
+
+
+    def dealPreFlop(self):
         if len(self.players) <= 1:
             raise Exception("You need at least 2 player to be able to play")
         self.deck.shuffle()
@@ -30,6 +35,12 @@ class Game:
                 card = self.deck.cards.pop()
                 card.belongs_to(player)
                 player.cards.append(card)
+
+
+    def dealFlop(self):
+        [self.flops.append(self.deck.cards.pop()) for _ in range(3)]
+        self.show_flops = True
+
 
 
 

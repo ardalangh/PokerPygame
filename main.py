@@ -42,7 +42,8 @@ user.assignPosOnScreen(2)
 dummyPlayer1.assignPosOnScreen(1)
 dummyPlayer2.assignPosOnScreen(3)
 
-game.dealPreFlop(screen)
+game.dealPreFlop()
+game.dealFlop()
 
 while running:
     for event in pygame.event.get():
@@ -53,6 +54,11 @@ while running:
     #         #     bg = pygame.transform.scale(bg, (event.w, event.h))
     #     # screen.blit(bg, (0, 0))
     screen.fill((0,0,0))
+
+
+    if game.show_flops:
+        [c.draw_middle_card(screen,i) for i, c in enumerate(game.flops)]
+
     [c.draw(screen) for c in user.cards]
     [c.draw(screen) for c in dummyPlayer1.cards]
     [c.draw(screen) for c in dummyPlayer2.cards]
