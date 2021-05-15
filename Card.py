@@ -1,11 +1,17 @@
 import pygame
 
+
 from Player import Player
 
 
 
 class Card:
+    SIZE = (140, 180)
     MARGINBETWEENCARDS = 10
+
+
+
+
     def __init__(self, suit, face, screen_size):
         self.screen_size = screen_size
         self.suit = suit
@@ -29,7 +35,7 @@ class Card:
         if player.dir != 2:
             self.filePath = f"./assets/cards/red_back.jpg"
             self.card_loaded = pygame.image.load(self.filePath)
-            self.card_loaded = pygame.transform.scale(self.card_loaded, (140, 180))
+            self.card_loaded = pygame.transform.scale(self.card_loaded, Card.SIZE)
 
     def rotate_card_in_respect_to_player_pos(self):
 
@@ -62,10 +68,8 @@ class Card:
         screen.blit(self.card_loaded_rotated, [self.x, self.y])
         return self
 
-
-    def draw_middle_card(self,  screen, index):
-        mid_pos = [(10,10), (40, 10), (70, 10)]
-        screen.blit(self.card_loaded, mid_pos[index])
+    def draw_middle_card(self,  screen, index, middle_card_pos):
+        screen.blit(self.card_loaded, middle_card_pos[index])
 
 
 

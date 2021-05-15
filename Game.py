@@ -5,6 +5,8 @@ from Table import Table
 
 class Game:
 
+    mid_cards_pos = [(10,10) ,  (40, 10), (70, 10), (100, 10), (130, 10), (160, 10)]
+
     smallBlindAmount = 5   # $5
     bigBlindAmount = 10    # $10 This is the min bet
 

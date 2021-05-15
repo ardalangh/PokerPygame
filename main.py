@@ -1,8 +1,4 @@
 import pygame
-from screeninfo import get_monitors
-
-from Card import Card
-from CardDeck import CardDeck
 from Game import Game
 from Player import Player
 
@@ -57,7 +53,7 @@ while running:
 
 
     if game.show_flops:
-        [c.draw_middle_card(screen,i) for i, c in enumerate(game.flops)]
+        [c.draw_middle_card(screen,i, Game.mid_cards_pos) for i, c in enumerate(game.flops)]
 
     [c.draw(screen) for c in user.cards]
     [c.draw(screen) for c in dummyPlayer1.cards]
