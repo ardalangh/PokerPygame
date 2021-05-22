@@ -65,10 +65,10 @@ class Player:
 
 
 
-    # def getAngleRot(self):
-    #     if (self.dir == 1): return -90.0
-    #     elif (self.dir == 2): return 0.0
-    #     elif (self.dir == 3): return 90.0
+    def getAngleRot(self):
+        if (self.dir == 1): return -90.0
+        elif (self.dir == 2): return 0.0
+        elif (self.dir == 3): return 90.0
 
 
 
@@ -99,5 +99,9 @@ class Player:
         # if dir == 0:
         #
         # screen.blit(img, (20, 20))
+
+
+    # def timed_bet(self):
+    #     timer = 10
 
 

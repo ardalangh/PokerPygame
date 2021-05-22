@@ -37,6 +37,6 @@ def evaluate_score_player_cards(player_cards_plus_5mid):
         type_counts.append(len(player_cards_plus_5mid.filter(lambda c: c.face == card.face)))
 
 
-#     Things to research: lambda functions and filter and map
+#     to research: lambda functions and filter and map
 
 
