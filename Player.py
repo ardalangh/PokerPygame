@@ -7,13 +7,19 @@ class Player:
     MARGIN = 50
     R_ICON = 50
 
-    def __init__(self, name, age, money=2000):
+    def __init__(self, name, age, money, size):
+        self.size = size
         self.name = name
         self.age = age
         self.money = money
         self.cards = []
         self.dir = 2
+        self.timer = None
         # self.img
+
+        self.icon_circle = pygame.Rect(self.icon_pos_assign(size), (Player.R_ICON, Player.R_ICON))
+
+
 
     def __str__(self):
         return f"{self.name} has ${self.money}"
@@ -64,10 +70,12 @@ class Player:
         width, height = size
         if self.dir == 2:
             return [width / 2, height - Card.Card.SIZE[1] - 2 * Player.R_ICON]
+        # HW start
         elif self.dir == 1:
             return [width - 70 - 100, height / 2]
         elif self.dir == 3:
             return [70 + 100, height / 2]
+        # HW end
 
     def getAngleRot(self):
         if self.dir == 1:
@@ -76,6 +84,20 @@ class Player:
             return 0.0
         elif self.dir == 3:
             return 90.0
+
+
+
+
+
+
+
+    # def timer_in_icon_pos_assign(self):
+
+
+
+
+
+
 
     def drawIcon(self, screen, size):
         """
@@ -88,12 +110,17 @@ class Player:
                            1
                            )
         font = pygame.font.SysFont("Sans", 24)
+        if self.timer:
+            timer_icon = font.render(str(self.timer), True, (255, 255, 255))
+            screen.blit(timer_icon, )
 
-        user_name_to_be_displayed = font.render(self.name, True, (255, 255, 255))
 
-        pygame.transform.rotate(user_name_to_be_displayed, self.getAngleRot())
 
-        screen.blit(user_name_to_be_displayed, self.assignCenter4drawName(size))
+
+        # font = pygame.font.SysFont("Sans", 24)
+        # user_name_to_be_displayed = font.render(self.name, True, (255, 255, 255))
+        # pygame.transform.rotate(user_name_to_be_displayed, self.getAngleRot())
+        # screen.blit(user_name_to_be_displayed, self.assignCenter4drawName(size))
 
         # font = pygame.font.SysFont(None, 24)
         #
@@ -103,5 +130,6 @@ class Player:
         #
         # screen.blit(img, (20, 20))
 
-    # def timed_bet(self):
-    #     timer = 10
+
+    def timed_bet(self):
+        timer = 10

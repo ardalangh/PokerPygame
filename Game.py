@@ -29,17 +29,17 @@ class Game:
 
 
 
-    # def bet_or_fold(self, players):
-    #     """
-    #     :param players: list all the players
-    #     :returns List: amount of money bet by players in order of index. if players folds the amount money should be None
-    #     """
-    #     for player in players:
-    #         player.timed_bet()
-    #
-    #
+    def bet_or_fold(self, players):
+        """
+        :param players: list all the players
+        :returns List: amount of money bet by players in order of index. if players folds the amount money should be None
+        """
+        for player in players:
+            player.timed_bet()
+
+
     # def start_round(self, players):
-    #
+
 
 
 

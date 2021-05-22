@@ -27,9 +27,9 @@ if user_age < 21:
     exit()
 
 game = Game(size)
-user = Player(user_name, user_age, 2000)
-dummyPlayer1 = Player("dummy1", 0, 2000)
-dummyPlayer2 = Player("dummy2", 0, 2000)
+user = Player(user_name, user_age, 2000, size)
+dummyPlayer1 = Player("dummy1", 0, 2000, size)
+dummyPlayer2 = Player("dummy2", 0, 2000, size)
 game.players.append(user)
 game.players.append(dummyPlayer1)
 game.players.append(dummyPlayer2)
