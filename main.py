@@ -50,6 +50,7 @@ game.dealPreFlop()
 button = Button(size[0]/2,size[1]/2, None, None )
 
 
+cycle = 0
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -70,7 +71,7 @@ while running:
 
 
 
-    button.draw(screen)
+    button.draw(screen, cycle)
     # [c.draw(screen) for c in user.cards]
     # [c.draw(screen) for c in dummyPlayer1.cards]
     # [c.draw(screen) for c in dummyPlayer2.cards]
@@ -83,3 +84,4 @@ while running:
 
     pygame.display.flip()
     clock.tick(32)
+    cycle += 1
