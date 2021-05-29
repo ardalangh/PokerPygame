@@ -131,5 +131,5 @@ class Player:
         # screen.blit(img, (20, 20))
 
 
-    def timed_bet(self):
+    def make_bet_chioce(self):
         timer = 10

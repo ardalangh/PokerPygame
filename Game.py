@@ -14,19 +14,22 @@ class Game:
     def __init__(self, screen_size):
         self.round = 1
         self.screen_size = screen_size
-        self.dealer = None
-        self.bigBlind = None
-        self.smallBlind = None
 
-        self.players = []    # LIST OF ALL PLAYERS
+
+        self.players = []       # LIST OF ALL PLAYERS
         self.deck = CardDeck(screen_size)
         self.table = Table()
+
+        # self.dealerIndex = 0
 
         self.show_flops = False
         self.show_river = False
         self.show_turn = False
         self.flops = []
 
+
+        self.pot = 0            # how many chips in the middle total
+        self.bet = 0            # highest bet for that round
 
 
     def bet_or_fold(self, players):
@@ -54,6 +57,13 @@ class Game:
                 card = self.deck.cards.pop()
                 card.belongs_to(player)
                 player.cards.append(card)
+
+
+
+    def preFlopBet(self, players):
+        for player in players:
+            player.make_bet_chioce(self.bet)
+
 
 
     def dealFlop(self):

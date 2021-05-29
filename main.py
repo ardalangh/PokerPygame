@@ -1,4 +1,6 @@
 import pygame
+
+from Button import Button
 from Game import Game
 from Player import Player
 
@@ -38,32 +40,46 @@ user.assignPosOnScreen(2)
 dummyPlayer1.assignPosOnScreen(1)
 dummyPlayer2.assignPosOnScreen(3)
 
+
 game.dealPreFlop()
+
+
+
+
+
+button = Button(size[0]/2,size[1]/2, None, None )
+
 
 while running:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             running = False
         # elif event.type == pygame.VIDEORESIZE:
-    #         #     screen = pygame.display.set_mode((event.w, event.h))
-    #         #     bg = pygame.transform.scale(bg, (event.w, event.h))
-    #     # screen.blit(bg, (0, 0))
+             #     screen = pygame.display.set_mode((event.w, event.h))
+             #     bg = pygame.transform.scale(bg, (event.w, event.h))
+        elif event.type == pygame.MOUSEBUTTONDOWN:
+            if button.being_clicked(pygame.mouse.get_pos()):
+                print("bnutton is clicked")
+
+
+
     screen.fill((0,0,0))
-
     user.drawIcon(screen, size)
-
     if game.show_flops:
         [c.draw_middle_card(screen,i, Game.mid_cards_pos) for i, c in enumerate(game.flops)]
 
-    [c.draw(screen) for c in user.cards]
-    [c.draw(screen) for c in dummyPlayer1.cards]
-    [c.draw(screen) for c in dummyPlayer2.cards]
 
-    #     # user.drawIcon(screen, size)
-    #     # dummyPlayer1.drawIcon(screen, size)
-    #     # dummyPlayer2.drawIcon(screen, size)
 
-    
+    button.draw(screen)
+    # [c.draw(screen) for c in user.cards]
+    # [c.draw(screen) for c in dummyPlayer1.cards]
+    # [c.draw(screen) for c in dummyPlayer2.cards]
+
+
+
+
+
+
+
     pygame.display.flip()
-
-    clock.tick(60)
+    clock.tick(32)
